@@ -6,20 +6,16 @@
 package leadDash.controller;
 
 
-import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import leadDash.leadrepository.LeadRepository;
-//import leadDash.leadservice.LeadService;
 import leadDash.model.Lead;
 
 /**
@@ -55,19 +51,15 @@ public class LeadController {
           
     }
     
-    @RequestMapping(value = "/deleteLead", method = RequestMethod.GET) 
-    public ModelAndView deleteLead(HttpServletRequest request) {
-        String name = request.getParameter("name");
-        return new ModelAndView("redirect:/");
-    }
     
-    @RequestMapping(value = "/editLead", method = RequestMethod.GET)
-    public ModelAndView editLead(HttpServletRequest request) {
-        String leadName = request.getParameter("name"); 
-       // Lead lead = leadService.getLead(leadName);
-        ModelAndView model = new ModelAndView("LeadForm");
-        //model.addObject("lead", lead);
-        
-        return model;
-    } 
+    @RequestMapping(value = "/leads/{id}", method = RequestMethod.GET) 
+    public @ResponseBody Lead getLead(@PathVariable("id") Integer id) {
+    	Lead lead = leadRepository.findOne(id);
+		return lead;
+    }
+    @RequestMapping(value = "/lead/{id}", method = RequestMethod.DELETE) 
+    public @ResponseBody String deleteLead(@PathVariable("id") Integer id) {
+    	leadRepository.delete(id);
+		return "deleted";
+    }
 }
