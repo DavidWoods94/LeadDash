@@ -23,12 +23,14 @@ public class UserController {
 	@Autowired
     private UserRepository repository;
 	
+	//signup
 	@RequestMapping(value = "/signup")
     public String addStudent(Model model){
     	model.addAttribute("signupform", new SignupForm());
         return "signup";
     }
 	
+	//saves the new user
 	@RequestMapping(value = "/saveuser", method = RequestMethod.POST)
     public String save(@Valid @ModelAttribute("signupform") SignupForm signupForm, BindingResult bindingResult) {
     	System.out.println(bindingResult.toString());

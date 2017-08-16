@@ -1,3 +1,6 @@
+#page-wrapper {
+	margin: 0;
+}
 .delete-btn {
 	border: none;
 	width: 100%;
@@ -18,4 +21,27 @@
 .panel-title {
 	display: inline-block;
 	width: 50%;
+}
+
+p {
+	word-wrap: break-word;
+}
+
+.alert {
+	margin-top: 2rem;
+}
+
+.dropdown-user form {
+	margin: 1rem;
+}
+.dropdown-user form .btn {
+	width: 100%;
+	
+}
+.login-panel {
+	margin-top: 5%;
+}
+
+body > div.login .login-panel {
+	margin-top: 25% !important;
 }

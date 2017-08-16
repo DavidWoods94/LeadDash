@@ -21,7 +21,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		 http
 	         .authorizeRequests()
-	             .antMatchers("/vendor/**","/css/**", "/js/**", "/signup", "/saveuser").permitAll()
+	             .antMatchers("/vendor/**","/css/**", "/js/**", "/signup", "/saveuser").permitAll() //blocks all urls except these
 	             .and()
 	         .authorizeRequests()
                  .anyRequest().authenticated()
@@ -35,6 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	             .permitAll();
 	 }
 	 
+	//for testing
 	 @Autowired
 	 public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 	     auth

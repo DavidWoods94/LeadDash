@@ -7,19 +7,13 @@ package com.woda.leaddash.model;
 
  
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -29,7 +23,11 @@ public class Lead implements Serializable {
     private Long id;
     
     private String name;
-   
+    
+    private String company;
+    
+    private String priority;
+    
     private String phone;
     
     private String email;
@@ -156,6 +154,7 @@ public class Lead implements Serializable {
         status = s;
     }
     
+    
     @ManyToOne
     @JoinColumn(name="user_id")
     public User getUser() {
@@ -166,6 +165,24 @@ public class Lead implements Serializable {
     public void setUser(User user){
     	this.user = user;
     }
+
+    @Column(name = "company")
+	public String getCompany() {
+		return company;
+	}
+	
+	public void setCompany(String company) {
+		this.company = company;
+	}
+	
+	@Column(name = "priority")
+	public String getPriority() {
+		return priority;
+	}
+
+	public void setPriority(String priority) {
+		this.priority = priority;
+	}
     
     
 }

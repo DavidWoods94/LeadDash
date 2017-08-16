@@ -10,7 +10,7 @@
     <meta name="description" content=""/>
     <meta name="author" content=""/>
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>Login</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" th:href="@{vendor/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
@@ -20,6 +20,7 @@
 
     <!-- Custom CSS -->
     <link href="css/sb-admin-2.css" rel="stylesheet"/>
+    <link href="css/styles.css" rel="stylesheet"/>
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
@@ -28,24 +29,18 @@
 </head>
 
 <body>
-	<div th:if="${param.error}">
-            Invalid username and password.
-    </div>
-    <div th:if="${param.logout}">
-            You have been logged out.
-    </div>
-    <div class="container">
+    <div class="container login">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Please Sign In</h3>
+                        <h3 class="panel-title"><b>Leads Dash</b> - Sign In</h3>
                     </div>
                     <div class="panel-body">
                         <form th:action="@{/login}" method="post">
                             <fieldset>
                                 <div class="form-group">
-                                    <input class="form-control" placeholder="E-mail" name="username" type="text"/>
+                                    <input class="form-control" placeholder="Username" name="username" type="text"/>
                                 </div>
                                 <div class="form-group">
                                     <input class="form-control" placeholder="Password" name="password" type="password" value=""/>
@@ -57,11 +52,17 @@
                                 </div>
                                 <!-- Change this to a button or input when using this as a form -->
                                 <div><input class="btn btn-primary" type="submit" value="Sign In"/>
-                                
-                                <a class="btn btn-primary" th:href="@{/signup}">Sign-up</a>
+                                	<a class="btn btn-primary" th:href="@{/signup}">Sign-up</a>
                                 </div>
+                                <div class="alert alert-danger" role="alert" th:if="${param.error}">
+            						Invalid username and password.
+    							</div>
+							    <div class="alert alert-success" role="alert" th:if="${param.logout}">
+							            You have been logged out.
+							    </div>
                             </fieldset>
                         </form>
+                        <small>Engineered by <a href="//david-woods.org" target="_blank">David Woods</a></small>
                     </div>
                 </div> 
             </div>
